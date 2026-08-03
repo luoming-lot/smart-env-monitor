@@ -7,6 +7,9 @@ frontend/node_modules/
 frontend/dist/
 *.log
 
+# 打进 jar 的前端构建产物（由 Dockerfile 在构建时生成）
+backend/src/main/resources/static/
+
 # IDE
 .idea/
 .vscode/

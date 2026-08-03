@@ -44,12 +44,19 @@ public class MqttService implements MqttCallback {
     @Value("${mqtt.topic-filter}")
     private String topicFilter;
 
+    @Value("${mqtt.enabled:true}")
+    private boolean enabled;
+
     private MqttClient client;
     private final ScheduledExecutorService reconnector = Executors.newSingleThreadScheduledExecutor();
     private volatile boolean reconnecting = false;
 
     @PostConstruct
     public void init() {
+        if (!enabled) {
+            log.info("MQTT 已禁用（mqtt.enabled=false），跳过连接");
+            return;
+        }
         try {
             client = new MqttClient(brokerUrl, clientId, new MemoryPersistence());
             client.setCallback(this);

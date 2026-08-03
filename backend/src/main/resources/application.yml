@@ -18,6 +18,7 @@ spring:
     locations: classpath:db/migration
 
 mqtt:
+  enabled: ${MQTT_ENABLED:true}
   broker-url: ${MQTT_BROKER_URL:tcp://localhost:1883}
   client-id: ${MQTT_CLIENT_ID:env-monitor-backend}
   username: ${MQTT_USERNAME:}
@@ -31,6 +32,8 @@ app:
     expiration-ms: ${JWT_EXPIRATION_MS:86400000}
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost}
+  demo-data:
+    enabled: ${DEMO_DATA_ENABLED:false}
 
 logging:
   level:

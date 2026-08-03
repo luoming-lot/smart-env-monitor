@@ -8,23 +8,23 @@
 
 1. 点击上方按钮，登录 Render（可用 GitHub 账号直接注册/登录）；
 2. 首次使用会引导连接 GitHub，授权 `smart-env-monitor` 仓库；
-3. 在 Blueprint 页面确认四个服务（backend / env-monitor-web / mosquitto / env-monitor-mock）后点击 **Apply**；
-4. 等待构建完成（约 5 分钟），访问 `https://env-monitor-web.onrender.com`。
+3. 在 Blueprint 页面确认 `env-monitor` 服务后点击 **Apply**；
+4. 等待构建完成（约 5 分钟），访问 `https://env-monitor.onrender.com`，使用 `admin / admin123` 登录。
 
 ### 服务说明
 
-| 服务 | 类型 | 说明 |
-| --- | --- | --- |
-| `env-monitor-web` | Web | Nginx 托管前端，反向代理 API 与 WebSocket |
-| `backend` | Web | Spring Boot 后端（demo profile，H2 文件库） |
-| `mosquitto` | Worker | MQTT Broker（内部网络 `mosquitto:1883`） |
-| `env-monitor-mock` | Worker | 模拟设备持续上报数据（含随机报警尖峰） |
+`env-monitor`（Web，免费档单服务）：
+
+- 前端已打包进后端 jar，同一端口提供页面、REST API 与 WebSocket；
+- `demo` profile 下内置演示数据模拟器，每 5 秒生成 3 台演示设备的遥测数据（含随机报警尖峰），走与 MQTT 相同的采集链路；
+- 数据存储在 `/tmp` 下的 H2 文件库，实例重建后重置。
 
 ### 免费档注意事项
 
 - Web 服务闲置 15 分钟自动休眠，首次访问需等待唤醒（约 1 分钟）；
 - 演示环境使用 `/tmp` 下的 H2 文件数据库，实例重建后数据重置；
-- 如需长期稳定运行与数据持久化：升级为付费实例并接入 MySQL（Render 不提供托管 MySQL，可选用云厂商 MySQL 或自建），再将 `SPRING_PROFILES_ACTIVE` 切换为默认 profile 并配置 `MYSQL_URL` 等环境变量。
+- 免费档不支持后台 Worker 服务，因此演示模式不依赖 MQTT Broker；完整 MQTT + ESP32 链路请使用 docker compose 或本地部署（见下文）；
+- 如需长期稳定运行与数据持久化：升级为付费实例并接入 MySQL（Render 不提供托管 MySQL，可选用云厂商 MySQL 或自建），再将 `SPRING_PROFILES_ACTIVE` 切换为默认 profile 并配置 `MYSQL_URL`、`MQTT_BROKER_URL` 等环境变量。
 
 ## 1. Docker Compose 部署（单机）
 
