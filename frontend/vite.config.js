@@ -16,6 +16,8 @@ export default defineConfig({
   },
   server: {
     port: 5173,
+    // 允许通过公网隧道（tunnelmole / cloudflared 等）访问开发服务器
+    allowedHosts: true,
     proxy: {
       '/api': { target: 'http://localhost:8080', changeOrigin: true },
       '/ws': { target: 'ws://localhost:8080', ws: true },
