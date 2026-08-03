@@ -1,6 +1,8 @@
 # 接口文档
 
-Base URL：`http://localhost:8080/api`
+Base URL：`http://localhost:8080/api`（本机/ Docker 部署）
+
+在线演示环境的 Base URL 与前端同源：`https://env-monitor-60z3.onrender.com/api`
 
 所有接口（除登录外）均需在请求头携带 Token：
 

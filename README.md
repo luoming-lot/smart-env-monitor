@@ -118,7 +118,7 @@ env-monitor/
 
 点击按钮 → 登录 Render → 连接 GitHub 仓库 → 确认 Apply，约 5 分钟即可获得公开访问地址。演示模式将前端打包进后端并内置模拟数据，开箱即有实时数据（无需任何本地环境）。
 
-🌐 **在线演示**：https://env-monitor-60z3.onrender.com （账号 `admin` / `admin123`）
+🌐 **在线演示**：[https://env-monitor-60z3.onrender.com](https://env-monitor-60z3.onrender.com) （账号 `admin` / `admin123`）
 
 > Render 免费档说明：实例闲置 15 分钟后自动休眠，首次访问约需等待 1 分钟唤醒；演示环境使用内置模拟器与临时文件数据库，正式环境请使用 docker compose / MySQL 部署完整 MQTT + ESP32 链路（见 [docs/deployment.md](docs/deployment.md)）。
 
@@ -130,9 +130,9 @@ env-monitor/
 docker compose up -d --build
 ```
 
-启动完成后访问：
+启动完成后在本机访问（线上演示请用上方 Render 地址）：
 
-| 服务 | 地址 |
+| 服务 | 本机地址 |
 | --- | --- |
 | 前端控制台 | http://localhost |
 | 后端 API | http://localhost:8080/api |
