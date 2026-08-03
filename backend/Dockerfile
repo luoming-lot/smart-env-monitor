@@ -8,9 +8,9 @@ RUN npm run build
 
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
-COPY pom.xml .
+COPY backend/pom.xml .
 RUN mvn -q dependency:go-offline
-COPY src ./src
+COPY backend/src ./src
 COPY --from=fe /app/frontend/dist ./src/main/resources/static
 RUN mvn -q package -DskipTests
 
