@@ -43,7 +43,7 @@ public class DemoDataService {
             double temperature = 24 + i * 2 + 2.5 * Math.sin(t + i);
             double humidity = 52 + i * 4 + 6 * Math.cos(t * 0.8 + i);
             if (random.nextDouble() < 0.04) {
-                temperature += 12; // 偶发高温尖峰，演示报警触发
+                temperature += 20; // 偶发高温尖峰（超过默认 45°C 阈值），演示报警触发与恢复
             }
             TelemetryReading reading = new TelemetryReading(
                     Math.round(temperature * 10) / 10.0,

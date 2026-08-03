@@ -34,6 +34,7 @@ services:
     build: ./backend
     container_name: env-monitor-backend
     environment:
+      TZ: Asia/Shanghai
       MYSQL_URL: jdbc:mysql://mysql:3306/env_monitor?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8&allowPublicKeyRetrieval=true
       MYSQL_USER: iot
       MYSQL_PASSWORD: iot123456

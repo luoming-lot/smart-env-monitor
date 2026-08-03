@@ -9,7 +9,7 @@
 1. 点击上方按钮，登录 Render（可用 GitHub 账号直接注册/登录）；
 2. 首次使用会引导连接 GitHub，授权 `smart-env-monitor` 仓库；
 3. 在 Blueprint 页面确认 `env-monitor` 服务后点击 **Apply**；
-4. 等待构建完成（约 5 分钟），访问 `https://env-monitor.onrender.com`，使用 `admin / admin123` 登录。
+4. 等待构建完成（约 5 分钟），访问服务页显示的网址（本项目当前为 `https://env-monitor-60z3.onrender.com`），使用 `admin / admin123` 登录。
 
 ### 服务说明
 

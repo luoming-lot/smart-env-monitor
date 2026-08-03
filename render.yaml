@@ -13,5 +13,7 @@ services:
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: demo
+      - key: TZ
+        value: Asia/Shanghai
       - key: JWT_SECRET
         generateValue: true
