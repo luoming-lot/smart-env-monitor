@@ -1,5 +1,6 @@
 server:
-  port: 8080
+  # Render 等 PaaS 平台通过 PORT 环境变量指定端口；本地默认 8080
+  port: ${PORT:8080}
 
 spring:
   application:

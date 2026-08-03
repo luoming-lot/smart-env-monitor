@@ -112,6 +112,14 @@ env-monitor/
 
 ## 🚀 快速开始
 
+### 方式零：一键部署到 Render（在线演示）
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/luoming-lot/smart-env-monitor)
+
+点击按钮 → 登录 Render → 连接 GitHub 仓库 → 确认 Apply，约 5 分钟即可获得公开访问地址。部署包含前端、后端、MQTT Broker 与模拟设备四个服务，开箱即有实时数据（无需任何本地环境）。
+
+> Render 免费档说明：实例闲置 15 分钟后自动休眠，首次访问约需等待 1 分钟唤醒；演示环境使用临时文件数据库，正式环境请接入 MySQL（见 [docs/deployment.md](docs/deployment.md)）。
+
 ### 方式一：Docker Compose 一键部署（推荐）
 
 需要 Docker 与 Docker Compose。

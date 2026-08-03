@@ -1,0 +1,11 @@
+# Render 在线演示配置：无需 MySQL，使用 H2 文件数据库（/tmp 为临时目录，
+# 实例重建后数据会重置，适合演示；正式环境请接入 MySQL，见 application.yml）
+spring:
+  datasource:
+    url: jdbc:h2:file:/tmp/env_monitor_demo;MODE=MySQL;DATABASE_TO_LOWER=TRUE;CASE_INSENSITIVE_IDENTIFIERS=TRUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+mqtt:
+  broker-url: ${MQTT_BROKER_URL:tcp://mosquitto:1883}

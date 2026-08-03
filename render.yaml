@@ -1,0 +1,49 @@
+# Render Blueprint：一键部署整套平台
+# 使用方式：点击 README 中的 Deploy to Render 按钮，或在 Render 控制台 New -> Blueprint
+services:
+  - type: web
+    name: backend
+    runtime: docker
+    repo: https://github.com/luoming-lot/smart-env-monitor
+    plan: free
+    region: singapore
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: demo
+      - key: MQTT_BROKER_URL
+        value: tcp://mosquitto:1883
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://env-monitor-web.onrender.com,http://localhost:5173,http://localhost
+      - key: JWT_SECRET
+        generateValue: true
+
+  - type: web
+    name: env-monitor-web
+    runtime: docker
+    repo: https://github.com/luoming-lot/smart-env-monitor
+    plan: free
+    region: singapore
+    dockerfilePath: ./frontend/Dockerfile
+    healthCheckPath: /
+    envVars:
+      # Nginx 固定监听 80，覆盖 Render 注入的 PORT
+      - key: PORT
+        value: "80"
+
+  - type: worker
+    name: mosquitto
+    runtime: image
+    image:
+      url: eclipse-mosquitto:2
+    plan: free
+    region: singapore
+
+  - type: worker
+    name: env-monitor-mock
+    runtime: docker
+    repo: https://github.com/luoming-lot/smart-env-monitor
+    plan: free
+    region: singapore
+    dockerfilePath: ./tools/Dockerfile
