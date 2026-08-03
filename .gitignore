@@ -1,0 +1,28 @@
+# Java / Maven
+backend/target/
+*.class
+
+# Node / 前端
+frontend/node_modules/
+frontend/dist/
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# PlatformIO
+firmware/.pio/
+firmware/include/config.h
+
+# Python
+__pycache__/
+.venv/
+
+# 环境变量（密钥）
+.env
+
+# 系统文件
+.DS_Store
+Thumbs.db
