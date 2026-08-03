@@ -11,8 +11,8 @@
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/luoming-lot/temp-humidity-monitor.git
-cd temp-humidity-monitor
+git clone https://github.com/luoming-lot/smart-env-monitor.git
+cd smart-env-monitor
 
 # 2.（可选）设置 JWT 密钥
 cp .env.example .env
